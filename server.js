@@ -20,7 +20,7 @@ mongoose.connect('mongodb+srv://geovanni:alfredo12345@cluster0.icxrihs.mongodb.n
     });
 
 app.get('/', (req, res) => {
-    res.json({ message: 'API de E-commerce funcionando!' });
+    res.json({ message: 'Servicios levantados de carrito de compras, Ok' });
 });
 
 app.use('/api', usuarioRoutes);
