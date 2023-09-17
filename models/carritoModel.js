@@ -1,8 +1,6 @@
-// carritoModel.js
-
 const mongoose = require('mongoose');
 
-const cartItemSchema = new mongoose.Schema({
+const carritoItemSchema = new mongoose.Schema({
     ProductoID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'productos',
@@ -15,18 +13,18 @@ const cartItemSchema = new mongoose.Schema({
     }
 });
 
-const cartSchema = new mongoose.Schema({
+const carritoSchema = new mongoose.Schema({
     UsuarioID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'usuarios',
         required: true,
         unique: true
     },
-    Productos: [cartItemSchema],
+    Productos: [carritoItemSchema],
     Total: {
         type: Number,
         default: 0
     }
 });
 
-module.exports = mongoose.model('Carrito', cartSchema);
+module.exports = mongoose.model('Carrito', carritoSchema);

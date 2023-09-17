@@ -79,7 +79,7 @@ exports.loginUser = async (req, res) => {
     }
 
     const payload = { userID: user.DPI };
-    const token = jwt.sign(payload, "88DM3!g#wra9", { expiresIn: "1h" });
+    const token = jwt.sign(payload, "88DM3!g#wra9", { expiresIn: "1 hr." });
 
     res.json({ Mensaje: "Inicio de sesión exitoso.", Token: token });
   } catch (error) {
