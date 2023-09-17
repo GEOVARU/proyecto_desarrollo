@@ -1,0 +1,6 @@
+para correr el programa se debe de correr en la terminal, en el path del proyecto
+
+npm run dev
+
+geovanni ramirez 
+rudy soto
