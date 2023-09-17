@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
         const token = req.header('Token');
 
         if (!token) {
-            return res.status(401).json({ Mensaje: 'Token de autenticación no encontrado.' });
+            return res.status(401).json({ Mensaje: 'Token de autenticación no incluido' });
         }
 
         const decoded = jwt.verify(token, '88DM3!g#wra9');
@@ -21,6 +21,6 @@ module.exports = async (req, res, next) => {
         req.user = user;
         next();
     } catch (error) {
-        res.status(500).json({ Mensaje: 'Error al verificar el rol de administrador.' });
+        res.status(500).json({ Mensaje: 'Error al verificar el rol de administrador. Valide sus permisos' });
     }
 };
