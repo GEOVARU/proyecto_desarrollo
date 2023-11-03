@@ -68,14 +68,13 @@ exports.loginUser = async (req, res) => {
     if (!user) {
       return res
         .status(401)
-        .json({ Mensaje: "Correo electrónico o contraseña incorrectos." });
+        .json({ Mensaje: "Correo electrónico incorrecto." });
     }
-
     const isMatch = await bcrypt.compare(Clave, user.Clave);
     if (!isMatch) {
       return res
         .status(401)
-        .json({ Mensaje: "Correo electrónico o contraseña incorrectos." });
+        .json({ Mensaje: "Contraseña incorrecta." });
     }
 
     const payload = { userID: user.DPI };
