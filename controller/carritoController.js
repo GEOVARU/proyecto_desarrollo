@@ -7,7 +7,7 @@ const Cart = require('../models/carritoModel');
 
 exports.getCart = async (req, res) => {
     try {
-        const userId = req.user._id; 
+        const userId = req.user._id;
 
         const cart = await Cart.findOne({ UsuarioID: userId }).populate('Productos.ProductoID');
 
@@ -55,8 +55,8 @@ exports.AgregarProductoCarrito = async (req, res) => {
         res.json({ Mensaje: "Producto añadido al carrito exitosamente." });
 
     } catch (error) {
-        res.status(500).json({ Mensaje: "Error al añadir producto al carrito.", error });
-    }
+        res.status(500).json({ Mensaje: "Error al añadir producto al carrito.", error });
+    }
 };
 exports.updateCartItem = async (req, res) => {
     try {
