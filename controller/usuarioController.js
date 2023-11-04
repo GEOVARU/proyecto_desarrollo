@@ -78,11 +78,11 @@ exports.loginUser = async (req, res) => {
     }
 
     const payload = { userID: user.DPI };
-    const token = jwt.sign(payload, "88DM3!g#wra9", { expiresIn: "1 hr." });
+    const token = jwt.sign(payload, "88DM3!g#wra9", { expiresIn: "1 hr" });
 
     res.json({ Mensaje: "Inicio de sesión exitoso.", Token: token });
   } catch (error) {
-    res.status(500).json({ Mensaje: "Error al iniciar sesión." });
+    res.status(500).json({ Mensaje: "Error al iniciar sesión." + error });
   }
 };
 
