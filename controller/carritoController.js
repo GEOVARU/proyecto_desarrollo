@@ -20,7 +20,44 @@ exports.getCart = async (req, res) => {
         res.status(500).json({ Mensaje: "Error al obtener el carrito de compra." });
     }
 };
+exports.AgregarProductoCarrito = async (req, res) => {
+    try {
+        const userId = req.user.userID;
+        console.log("UserID:", userId);
 
+        const { ProductoID, Cantidad } = req.body;
+
+        const product = await Product.findById(ProductoID);
+        if (!product) {
+            return res.status(404).json({ Mensaje: "Producto no encontrado." });
+        }
+
+        if (Cantidad > product.Disponibilidad) {
+            return res.status(400).json({ Mensaje: "No hay suficiente disponibilidad del producto." });
+        }
+
+        let cart = await Cart.findOne({ UsuarioID: userId });
+
+        if (!cart) {
+            cart = new Cart({ UsuarioID: userId, Productos: [] });
+        }
+
+        const productInCart = cart.Productos.find(p => p.ProductoID.toString() === ProductoID);
+
+        if (productInCart) {
+            productInCart.Cantidad += Cantidad;
+        } else {
+            cart.Productos.push({ ProductoID, Cantidad });
+        }
+
+        await cart.save();
+
+        res.json({ Mensaje: "Producto añadido al carrito exitosamente." });
+
+    } catch (error) {
+        res.status(500).json({ Mensaje: "Error al añadir producto al carrito.", error });
+    }
+};
 exports.updateCartItem = async (req, res) => {
     try {
         const userId = req.user._id;
