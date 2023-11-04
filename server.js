@@ -11,7 +11,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());  
-mongoose.connect('mongodb+srv://geovanni:alfredo12345@cluster0.icxrihs.mongodb.net/PROYECTO_DEV', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://geovanni:alfredo12345@cluster0.7r9nadw.mongodb.net/proyecto_dev', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Conectado a la base de datos MongoDB');
     })
